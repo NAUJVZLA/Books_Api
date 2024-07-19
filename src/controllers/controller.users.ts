@@ -1,4 +1,4 @@
-import {BodyResquestLogin, BodyResponseLogin} from "../models/auth.model"
+import {BodyResquestLogin, BodyResponseLogin } from "../models/auth.model"
 
 export class UserController {
     public domain: string;
@@ -28,4 +28,5 @@ export class UserController {
 
     const responseBodyLogin: BodyResponseLogin = await response.json();
     return responseBodyLogin;
-}}
+}
+}

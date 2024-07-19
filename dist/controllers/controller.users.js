@@ -26,9 +26,9 @@ export class UserController {
                 headers: headers,
                 body: JSON.stringify(userData),
             };
-            const response = yield fetch(`${this.domain}auth/login`, requestOptions);
+            const response = yield fetch(`${this.domain}/auth/login`, requestOptions);
             if (!response.ok) {
-                console.log(`respondebody error:  ${(yield response.json()).message}`);
+                console.log(`responde body error:  ${(yield response.json()).message}`);
                 throw new Error(`error: ${response.status}:${response.statusText}`);
             }
             const responseBodyLogin = yield response.json();
