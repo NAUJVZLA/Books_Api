@@ -22,8 +22,8 @@ export class UserController {
         const response:Response =  await fetch(`${this.domain}/auth/login`, requestOptions);
     
         if (!response.ok) {
-            console.log(`respondebody error:  ${(await response.json()).message}`);
-            throw new Error(`error: ${response.status}:${response.statusText}`)
+            console.log(`responde body error:  ${(await response.json()).message}`);
+            throw new Error(`error: ${response.status}:${response.statusText}`);
     }
 
     const responseBodyLogin: BodyResponseLogin = await response.json();
