@@ -1,5 +1,5 @@
 import {UserController} from "./controllers/controller.users.js";
-    const URL_USERS : string = "http://190.147.64.47:5155"
+    const URL_USERS : string = "http://190.147.64.47:5155/api/v1"
 
     const form = document.querySelector('form') as HTMLFormElement;
     const email = document.getElementById('email') as HTMLInputElement;

@@ -19,7 +19,7 @@ export class UserController {
             headers: headers,
             body: JSON.stringify(userData),
         }
-        const response:Response =  await fetch(`${this.domain}auth/login`, requestOptions);
+        const response:Response =  await fetch(`${this.domain}/auth/login`, requestOptions);
     
         if (!response.ok) {
             console.log(`respondebody error:  ${(await response.json()).message}`);
