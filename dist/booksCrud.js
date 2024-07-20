@@ -9,19 +9,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { CardTemplateController } from "./controllers/cardTemplate.controller.js";
 import { booksController } from "./controllers/books.controllers.js";
-const URL_BOOKS = "http://190.147.64.47:5155/api/v1";
-const BtnLogout = document.getElementById("btnLogout");
-const PrePage = document.getElementById("prev-page");
-const NextPage = document.getElementById("next-page");
-const token = localStorage.getItem("token");
+const URL_BOOKS = "http://190.147.64.47:5155";
+const btnLogout = document.getElementById("btnlogout");
+const prevPage = document.getElementById("prev-page");
+const nextPage = document.getElementById("next-page");
+const token = localStorage.getItem("authToken");
 let currentPage = 1;
-const Limit = 10;
-BtnLogout.addEventListener("click", (ev) => {
+const limit = 10;
+btnLogout.addEventListener("click", (e) => {
     localStorage.removeItem("token");
     window.location.href = "index.html";
 });
 if (!token) {
-    alert("authentication token is required");
+    alert("Authentication token is missigin. Please log in");
     window.location.href = "index.html";
 }
 else {
@@ -31,25 +31,78 @@ else {
     const author = document.getElementById("author");
     const description = document.getElementById("description");
     const summary = document.getElementById("summary");
-    const publicationDate = document.getElementById("publication-Date");
+    const publicationDate = document.getElementById("publication-date");
     let idcatche;
     const cardTemplate = new CardTemplateController(containerBooks);
-    function allbooks(limit, currentPage) {
+    prevPage.addEventListener("click", (e) => __awaiter(void 0, void 0, void 0, function* () {
+        if (currentPage >= 1) {
+            currentPage--;
+            yield allBooks(limit, currentPage);
+        }
+    }));
+    nextPage.addEventListener("click", (e) => __awaiter(void 0, void 0, void 0, function* () {
+        if (currentPage >= 1) {
+            currentPage++;
+            yield allBooks(limit, currentPage);
+        }
+    }));
+    form.addEventListener("submit", (e) => __awaiter(void 0, void 0, void 0, function* () {
+        e.preventDefault();
+        const crudBooks = new booksController(URL_BOOKS);
+        if (idcatche === undefined) {
+            yield crudBooks.create(title, author, description, summary, publicationDate, token);
+        }
+        else {
+            yield crudBooks.update(idcatche, title, author, description, summary, publicationDate, token);
+            idcatche = undefined;
+        }
+        form.reset();
+        yield allBooks(limit, currentPage);
+    }));
+    containerBooks.addEventListener("click", (e) => __awaiter(void 0, void 0, void 0, function* () {
+        if (e.target instanceof HTMLButtonElement) {
+            const crudBooks = new booksController(URL_BOOKS);
+            if (e.target.classList.contains("btn-warning")) {
+                idcatche = e.target.dataset.id;
+                if (idcatche) {
+                    const book = yield crudBooks.GetById(idcatche, token);
+                    title.value = book.data.title;
+                    author.value = book.data.author;
+                    description.value = book.data.description;
+                    summary.value = book.data.summary;
+                    publicationDate.value = book.data.publicationDate;
+                }
+            }
+            else if (e.target.classList.contains("btn-danger")) {
+                const bookId = e.target.dataset.id;
+                if (bookId) {
+                    const confirmDelete = confirm("Are you sure you want to delet?");
+                    if (confirmDelete) {
+                        yield crudBooks.delete(bookId, token);
+                        idcatche = undefined;
+                        yield allBooks(limit, currentPage);
+                    }
+                }
+            }
+        }
+    }));
+    function allBooks(limit, currentPage) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log("Mostrar");
             const crudBooks = new booksController(URL_BOOKS);
             try {
                 const response = yield crudBooks.allBooks(token, limit, currentPage);
-                console.log(`respuesta de allbooks: ${response}`);
+                console.log(`Respuesta de allbooks: ${response} `);
                 const books = response.data;
-                containerBooks.innerHTML = '';
+                containerBooks.innerHTML = "";
                 for (const book of books) {
                     cardTemplate.render(book.id, book.title, book.author, book.description, book.summary, book.publicationDate);
                 }
             }
             catch (error) {
-                console.error("Error PIDIENDO LIBROS", error);
+                console.error("Error fetching books: ", error);
             }
         });
     }
-    allbooks(Limit, currentPage);
+    allBooks(limit, currentPage);
 }

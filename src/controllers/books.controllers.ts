@@ -49,7 +49,7 @@ export class booksController {
         };
 
         const response: Response = await fetch(`${this.domain}/api/vi/books`, request);
-        if(!response.ok) {
+        if (!response.ok) {
             console.log(`responde body error:  ${(await response.json()).message}`);
             throw new Error(`error: ${response.status}:${response.statusText}`);
         }
@@ -57,7 +57,7 @@ export class booksController {
         const responseBodyCreateBook: BodyResponseCreateBook = await response.json();
         return responseBodyCreateBook;
     }
-    async getId(id: string, token: string): Promise<BodyResponseGetById> {
+    async GetById(id: string, token: string): Promise<BodyResponseGetById> {
         const headers: Record<string, string> = {
             "accept": "*/*",
             "content-Type": "application/json",

@@ -60,7 +60,7 @@ export class booksController {
             return responseBodyCreateBook;
         });
     }
-    getId(id, token) {
+    GetById(id, token) {
         return __awaiter(this, void 0, void 0, function* () {
             const headers = {
                 "accept": "*/*",

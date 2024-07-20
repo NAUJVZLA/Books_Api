@@ -15,14 +15,14 @@ export class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             const userData = {
                 email: email.value,
-                password: password.value
+                password: password.value,
             };
             const headers = {
-                'accept': '/',
-                'Content-Type': 'application/json'
+                accept: "/",
+                "Content-Type": "application/json",
             };
             const requestOptions = {
-                method: 'POST',
+                method: "POST", //metodo de Login
                 headers: headers,
                 body: JSON.stringify(userData),
             };
