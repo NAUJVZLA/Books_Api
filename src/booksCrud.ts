@@ -5,7 +5,7 @@ const URL_BOOKS: string = "http://190.147.64.47:5155";
 const btnLogout = document.getElementById("btnlogout") as HTMLButtonElement;
 const prevPage = document.getElementById("prev-page") as HTMLButtonElement;
 const nextPage = document.getElementById("next-page") as HTMLButtonElement;
-const token = localStorage.getItem("authToken");
+const token = localStorage.getItem("token");
 
 let currentPage: number = 1;
 const limit: number = 10;
@@ -63,7 +63,6 @@ if (!token) {
         publicationDate,
         token as string
       );
-
     } else {
       await crudBooks.update(
         idcatche,
@@ -111,8 +110,6 @@ if (!token) {
   });
 
   async function allBooks(limit: number, currentPage: number) {
-    console.log("Mostrar");
-
     const crudBooks = new booksController(URL_BOOKS);
     try {
       const response = await crudBooks.allBooks(

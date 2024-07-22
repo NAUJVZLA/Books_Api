@@ -13,7 +13,7 @@ const URL_BOOKS = "http://190.147.64.47:5155";
 const btnLogout = document.getElementById("btnlogout");
 const prevPage = document.getElementById("prev-page");
 const nextPage = document.getElementById("next-page");
-const token = localStorage.getItem("authToken");
+const token = localStorage.getItem("token");
 let currentPage = 1;
 const limit = 10;
 btnLogout.addEventListener("click", (e) => {
@@ -88,7 +88,6 @@ else {
     }));
     function allBooks(limit, currentPage) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("Mostrar");
             const crudBooks = new booksController(URL_BOOKS);
             try {
                 const response = yield crudBooks.allBooks(token, limit, currentPage);

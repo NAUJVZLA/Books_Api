@@ -1,4 +1,5 @@
 import { BodyResponseGetAllBooks, BodyRequestCreateBook, BodyResponseGetById, BodyResponseUpdatebooks, BodyResponseCreateBook, BodyResponseDeletebooks, BodyRequestUpdatebooks } from '../models/books.model';
+
 export class booksController {
     public domain: string;
     constructor(domain: string) {
@@ -18,7 +19,7 @@ export class booksController {
             headers: headers,
         }
 
-        const response: Response = await fetch(`${this.domain}/api/vi/books?limit=${limit}&page=${page}`, requestOptions)
+        const response: Response = await fetch(`${this.domain}/api/vi/books?limit= ${limit}&page=${page}`, requestOptions)
         console.log(response);
         if (!response.ok) {
             throw new Error(`Error al obtener libros : ${response.status}:${response.statusText}`)
@@ -26,7 +27,6 @@ export class booksController {
         const responseBodyGetAllBooks: BodyResponseGetAllBooks = await response.json();
         return responseBodyGetAllBooks;
     }
-
     async create(title: HTMLInputElement, author: HTMLInputElement, description: HTMLInputElement, summary: HTMLInputElement, publicationDate: HTMLInputElement, token: string): Promise<BodyResponseCreateBook> {
 
         const newBook: BodyRequestCreateBook = {
@@ -50,7 +50,7 @@ export class booksController {
 
         const response: Response = await fetch(`${this.domain}/api/vi/books`, request);
         if (!response.ok) {
-            console.log(`responde body error:  ${(await response.json()).message}`);
+            console.log(`responde body error: ${(await response.json()).message}`);
             throw new Error(`error: ${response.status}:${response.statusText}`);
         }
 

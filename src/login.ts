@@ -1,26 +1,24 @@
 import { UserController } from "./controllers/controller.users.js";
 //declarando consts
-const URL_USERS: string = "http://190.147.64.47:5155/api/v1";
+const URL_USERS: string = "http://190.147.64.47:5155";
 const form = document.querySelector("form") as HTMLFormElement;
 const email = document.getElementById("email") as HTMLInputElement;
 const password = document.getElementById("password") as HTMLInputElement;
 
-
 //escucnando eventos del form
 form.addEventListener("submit", async (e: Event) => {
-    e.preventDefault();
-    const crudusers = new UserController(URL_USERS);
-    const respuesta = await crudusers.login(email, password);
+  e.preventDefault();
+  const crudusers = new UserController(URL_USERS);
+  const respuesta = await crudusers.login(email, password);
 
-    const token: string | null = respuesta.data.token;
+  const token: string | null = respuesta.data.token;
 
-    if (token) {
-        console.log(`REGISTRO EXITOSO USER: ${token}`)
-        localStorage.setItem('token', token);
-        window.location.href = "books.html";
-    } else {
-        console.log("error al ingresar");
-    }
-    form.reset();
-
+  if (token) {
+    console.log(`REGISTRO EXITOSO USER: ${token}`);
+    localStorage.setItem("token", token);
+    window.location.href = "books.html";
+  } else {
+    console.log("error al ingresar");
+  }
+  form.reset();
 });

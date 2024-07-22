@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { UserController } from "./controllers/controller.users.js";
 //declarando consts
-const URL_USERS = "http://190.147.64.47:5155/api/v1";
+const URL_USERS = "http://190.147.64.47:5155";
 const form = document.querySelector("form");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
@@ -21,7 +21,7 @@ form.addEventListener("submit", (e) => __awaiter(void 0, void 0, void 0, functio
     const token = respuesta.data.token;
     if (token) {
         console.log(`REGISTRO EXITOSO USER: ${token}`);
-        localStorage.setItem('token', token);
+        localStorage.setItem("token", token);
         window.location.href = "books.html";
     }
     else {

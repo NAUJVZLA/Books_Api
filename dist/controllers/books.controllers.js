@@ -23,7 +23,7 @@ export class booksController {
                 method: "GET",
                 headers: headers,
             };
-            const response = yield fetch(`${this.domain}/api/vi/books?limit=${limit}&page=${page}`, requestOptions);
+            const response = yield fetch(`${this.domain}/api/vi/books?limit= ${limit}&page=${page}`, requestOptions);
             console.log(response);
             if (!response.ok) {
                 throw new Error(`Error al obtener libros : ${response.status}:${response.statusText}`);
@@ -53,7 +53,7 @@ export class booksController {
             };
             const response = yield fetch(`${this.domain}/api/vi/books`, request);
             if (!response.ok) {
-                console.log(`responde body error:  ${(yield response.json()).message}`);
+                console.log(`responde body error: ${(yield response.json()).message}`);
                 throw new Error(`error: ${response.status}:${response.statusText}`);
             }
             const responseBodyCreateBook = yield response.json();
