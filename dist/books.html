@@ -1,11 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOOKS</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="CRUD Users With TypeScript - Functions, (Object Oriented Programming, OOP) Interfaces" />
+    <meta name="keywords" content="TypeScript, Crud, Functions, Object Oriented Programming, Interfaces">
+    <meta name="organization" content=“GATES”>
+    <meta name="author" content="Juan Carlos Caridad Gonzalez">
+    <meta name="designer" content="Riwi">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <title>Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script type="module" src="./booksCrud.js" defer></script>
+    <script type="module" src="./controllers/funtion.js" defer></script>
+    <link rel="stylesheet" href="./stylos.css" />
+
 </head>
+
 <body>
-    <h1>estoy  en libros</h1>
+
+    <nav class="navbar bg-body-tertiary fixed-top" id="navbar1">
+        <div class="container-fluid">
+            <h1><a class="tituloBest" href="http://190.147.64.47:5155/api-doc/" target="_blank">Form</a></h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><a href="books.html">MENU</a></h5>
+                    <div class="btnClosed">
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        <!-- modos -->
+                        <li class="nav-item" id="TogglechangeMode">
+                            <a class="nav-link active" aria-current="page" href="#" id="Mdark"><svg
+                                    xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon-filled"
+                                    width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6f32be"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M12 1.992a10 10 0 1 0 9.236 13.838c.341 -.82 -.476 -1.644 -1.298 -1.31a6.5 6.5 0 0 1 -6.864 -10.787l.077 -.08c.551 -.63 .113 -1.653 -.758 -1.653h-.266l-.068 -.006l-.06 -.002z"
+                                        stroke-width="0" fill="currentColor" />
+                                </svg></a>
+                            <!-- mode -->
+                            <a class="nav-link active" aria-current="page" href="#" id="ModeWhite"><svg
+                                    xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun-off"
+                                    width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffec00"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M3 3l18 18" />
+                                    <path d="M16 12a4 4 0 0 0 -4 -4m-2.834 1.177a4 4 0 0 0 5.66 5.654" />
+                                    <path
+                                        d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+                                </svg></a>
+                        </li>
+                    </div>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a href="./books.html">Inicio</a>
+                        </li>
+
+                        <!-- <ul class="dropdown-menu"> -->
+                        <li><a href="./users.html">Todos los usuarios</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a href="#services">Servicios</a></li>
+
+                    </ul>
+                    <!-- buscador del form -->
+                    <!-- <form class="d-flex mt-3" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form> -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <nav class="navBar">
+        <ul class="nav-links">
+        </ul>
+        <buttontype="button" id="btnlogout"><a class="btn btn-primary" href="index.html">salir</a></button>
+    </nav>
+
+
+
+
+
+    <main class="container">
+        <h1 class="text-TituloH1">Add Book</h1>
+        <form class="text-center mb-5">
+            <div class="form-group py-2 text-start">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="Title">
+            </div>
+            <div class="form-group py-2 text-start">
+                <label for="author">Author</label>
+                <input type="title" class="form-control" id="author" aria-describedby="author" placeholder="Author">
+            </div>
+            <div class="form-group py-2 text-start">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" aria-describedby="description"
+                    placeholder="Description">
+            </div>
+            <div class="form-group py-2 text-start">
+                <label for="summary">Summary</label>
+                <input type="text" class="form-control" id="summary" aria-describedby="summary" placeholder="Summary">
+            </div>
+            <div class="form-group py-2 text-start">
+                <label for="publication-date">publication-date</label>
+                <input type="text" class="form-control" id="publication-date" aria-describedby="publication-date"
+                    placeholder="publication-date">
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" id="btn-new" class="btn btn-primary">
+                    Save
+                </button>
+            </div>
+        </form>
+
+        <h1 class="text-TituloH1">Books</h1>
+
+        <div class="d-flex justify-content-center gap-5 my-3 flex-wrap container-books"></div>
+        <div class="d-grid gap-2" id="pagination">
+            <button class="btn btn-primary" id="prev-page">Previous</button>
+            <button class="btn btn-primary" id="next-page">Next</button>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
 </body>
+
 </html>

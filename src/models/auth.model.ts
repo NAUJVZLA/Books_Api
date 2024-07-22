@@ -7,3 +7,4 @@ export interface BodyResponseLogin{
     message: string,
     data: Record<string,string>
 }
+
