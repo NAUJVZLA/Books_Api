@@ -2,16 +2,102 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="CRUD Users With TypeScript - Functions, (Object Oriented Programming, OOP) Interfaces" />
+    <meta name="keywords" content="TypeScript, Crud, Functions, Object Oriented Programming, Interfaces">
+    <meta name="organization" content=“GATES”>
+    <meta name="author" content="Juan Carlos Caridad Gonzalez">
+    <meta name="designer" content="Riwi">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./stylos.css" />
+
+    <!-- scripts -->
+    <script type="module" src="./controllers/funtion.js" defer></script>
+    <script type="module" src="./login.js" defer></script>
+    <script type="module" src="sweet.alerts.js"></script>
+
+
+    <!-- alerts -->
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <title>BOOKS</title>
 </head>
 
 <body>
-    <main class="container">
-        <h1 class="text-center">Form</h1>
-        <form class="text-center mb-5">
 
+    <nav class="navbar bg-body-tertiary fixed-top" id="navbar1">
+        <div class="container-fluid">
+            <h1><a class="text-TituloH1" href="http://190.147.64.47:5155/api-doc/" target="_blank">Form</a></h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="text-TituloH1" id="offcanvasNavbarLabel">BOOKS</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item" id="TogglechangeMode">
+                            <!-- <button class="dark-mode" type="button" id="Mdark">Oscuro</button> -->
+                            <a class="nav-link active" aria-current="page" href="#" id="Mdark"><svg
+                                    xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon-filled"
+                                    width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6f32be"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M12 1.992a10 10 0 1 0 9.236 13.838c.341 -.82 -.476 -1.644 -1.298 -1.31a6.5 6.5 0 0 1 -6.864 -10.787l.077 -.08c.551 -.63 .113 -1.653 -.758 -1.653h-.266l-.068 -.006l-.06 -.002z"
+                                        stroke-width="0" fill="currentColor" />
+                                </svg></a>
+                            <!-- mode -->
+                            <a class="nav-link active" aria-current="page" href="#" id="ModeWhite"><svg
+                                    xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun-off"
+                                    width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffec00"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M3 3l18 18" />
+                                    <path d="M16 12a4 4 0 0 0 -4 -4m-2.834 1.177a4 4 0 0 0 5.66 5.654" />
+                                    <path
+                                        d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+                                </svg></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex mt-3" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <main class="container">
+        <form class="text-center mb-5" id="formLogin">
             <div class="form-group py-2 text-start">
                 <label for="email">email</label>
                 <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="email">
@@ -19,15 +105,22 @@
             <div class="form-group py-2 text-start">
                 <label for="password">password</label>
                 <input type="password" class="form-control" id="password" aria-describedby="password"
-                    placeholder="password">
+                    placeholder="password" autocomplete>
             </div>
-            <a href="./registration.html">Aún no tienes una cuenta? Ingresa aqui</a>
-            <button type="submit" id="btn-new" class="btn btn-success">
-                Save
-            </button>
+            <a href="./registration.html"> Aún no tienes una cuenta? Ingresa aqui</a>
+            <div class="d-grid gap-2">
+                <button type="submit" id="btnLogin" class="btn btn-primary">
+                    Entrar
+                </button>
+            </div>
         </form>
+
     </main>
-    <script type="module" src="./login.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

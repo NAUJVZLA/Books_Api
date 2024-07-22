@@ -22,10 +22,7 @@ export class UserController {
             headers: headers,
             body: JSON.stringify(userData),
         };
-        const response: Response = await fetch(
-            `${this.domain}/auth/login`,
-            requestOptions
-        );
+        const response: Response = await fetch(`${this.domain}/api/v1/auth/login`, requestOptions);
 
         if (!response.ok) {
             console.log(`responde body error:  ${(await response.json()).message}`);
@@ -35,4 +32,4 @@ export class UserController {
         const responseBodyLogin: BodyResponseLogin = await response.json();
         return responseBodyLogin;
     }
-}
+};

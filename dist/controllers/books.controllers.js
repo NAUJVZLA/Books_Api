@@ -23,10 +23,10 @@ export class booksController {
                 method: "GET",
                 headers: headers,
             };
-            const response = yield fetch(`${this.domain}/api/vi/books?limit= ${limit}&page=${page}`, requestOptions);
+            const response = yield fetch(`${this.domain}/api/v1/books?limit= ${limit}&page= ${page}`, requestOptions);
             console.log(response);
             if (!response.ok) {
-                throw new Error(`Error al obtener libros : ${response.status}:${response.statusText}`);
+                throw new Error(`Error al obtener libros:${response.status}:${response.statusText}`);
             }
             const responseBodyGetAllBooks = yield response.json();
             return responseBodyGetAllBooks;
@@ -46,15 +46,15 @@ export class booksController {
                 "content-Type": "application/json",
                 "Authorization": `Bearer ${token}`,
             };
-            const request = {
+            const requestOpcion = {
                 method: "POST",
                 headers: headers,
                 body: JSON.stringify(newBook)
             };
-            const response = yield fetch(`${this.domain}/api/vi/books`, request);
+            const response = yield fetch(`${this.domain}/api/v1/books`, requestOpcion);
             if (!response.ok) {
-                console.log(`responde body error: ${(yield response.json()).message}`);
-                throw new Error(`error: ${response.status}:${response.statusText}`);
+                // console.log(`responde body error: ${(await response.json()).message}`);
+                throw new Error(`error de captura de libros : ${response.status}:${response.statusText}`);
             }
             const responseBodyCreateBook = yield response.json();
             return responseBodyCreateBook;
@@ -71,9 +71,9 @@ export class booksController {
                 method: "GET",
                 headers: headers,
             };
-            const response = yield fetch(`${this.domain}/api/v1/books/id${id}`, requestOptions);
+            const response = yield fetch(`${this.domain}/api/v1/books/${id}`, requestOptions);
             if (!response.ok) {
-                throw new Error(`Error al obtener libros : ${response.status}:${response.statusText}`);
+                throw new Error(`Error al obtener libros :${response.status}:${response.statusText}`);
             }
             const responseBodyGetById = yield response.json();
             return responseBodyGetById;
@@ -98,7 +98,7 @@ export class booksController {
                 headers: headers,
                 body: JSON.stringify(updatedBook)
             };
-            const response = yield fetch(`${this.domain}/api/v1/books/id${idcatche}`, requestOptions);
+            const response = yield fetch(`${this.domain}/api/v1/books/${idcatche}`, requestOptions);
             if (!response.ok) {
                 throw new Error(`Error al obtener libros : ${response.status}:${response.statusText}`);
             }
@@ -118,7 +118,7 @@ export class booksController {
                 method: "DELETE",
                 headers: headers,
             };
-            const response = yield fetch(`${this.domain}/api/v1/books/id${id}`, requestOptions);
+            const response = yield fetch(`${this.domain}/api/v1/books/${id}`, requestOptions);
             if (!response.ok) {
                 throw new Error(`Error al obtener libros : ${response.status}:${response.statusText}`);
             }

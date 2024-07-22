@@ -6,9 +6,18 @@ const btnLogout = document.getElementById("btnlogout") as HTMLButtonElement;
 const prevPage = document.getElementById("prev-page") as HTMLButtonElement;
 const nextPage = document.getElementById("next-page") as HTMLButtonElement;
 const token = localStorage.getItem("token");
+// const BtnEntrar = document.getElementById("btn-entrar") as HTMLButtonElement;
 
 let currentPage: number = 1;
 const limit: number = 10;
+
+// BtnEntrar.addEventListener('click', (e: Event) => {
+//   e.preventDefault();
+//   alert('funciona');
+// });
+
+
+
 
 btnLogout.addEventListener("click", (e: Event) => {
   localStorage.removeItem("token");
@@ -38,15 +47,17 @@ if (!token) {
 
   prevPage.addEventListener("click", async (e: Event) => {
     if (currentPage >= 1) {
-      currentPage--;
+      currentPage--
       await allBooks(limit, currentPage);
     }
   });
 
   nextPage.addEventListener("click", async (e: Event) => {
+    console.log('next page');
     if (currentPage >= 1) {
       currentPage++;
       await allBooks(limit, currentPage);
+
     }
   });
 
@@ -98,6 +109,8 @@ if (!token) {
         const bookId = e.target.dataset.id;
 
         if (bookId) {
+
+
           const confirmDelete = confirm("Are you sure you want to delet?");
           if (confirmDelete) {
             await crudBooks.delete(bookId, token as string);
@@ -117,7 +130,7 @@ if (!token) {
         limit,
         currentPage
       );
-      console.log(`Respuesta de allbooks: ${response} `);
+      console.log(`Respuesta de allbooks:${response}`);
       const books = response.data;
 
       containerBooks.innerHTML = "";
@@ -133,7 +146,7 @@ if (!token) {
         );
       }
     } catch (error) {
-      console.error("Error fetching books: ", error);
+      // console.error("Error fetching books: ", error);
     }
   }
   allBooks(limit, currentPage);

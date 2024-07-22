@@ -4,12 +4,12 @@ export class CardTemplateController {
     }
     render(id, title, author, description, summary, publicationDate) {
         const figure = document.createElement('figure');
-        figure.classList.add('card', "col-4");
+        figure.classList.add('card', "col-3");
         const h2 = document.createElement("h2");
         h2.classList.add("card-ltitle", "text-center");
         h2.textContent = title;
         figure.appendChild(h2);
-        const h4 = document.createElement('h');
+        const h4 = document.createElement('h4');
         h4.classList.add('card-title', "text-center");
         h4.textContent = author;
         figure.appendChild(h4);
@@ -24,7 +24,7 @@ export class CardTemplateController {
         p.classList.add("card-text", "text-center");
         p.textContent = summary;
         figcaption.appendChild(p);
-        const h6 = document.createElement('6');
+        const h6 = document.createElement('h6');
         h6.classList.add("card-text", "text-center");
         h6.textContent = publicationDate;
         figcaption.appendChild(h6);

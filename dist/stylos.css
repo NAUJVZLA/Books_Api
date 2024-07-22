@@ -3,6 +3,108 @@
     flex-direction: row;
     justify-content: space-between;
 }
-button{
+/* dandole un estilo al modo oscuro */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición para color de fondo y texto */
+    background-color: #f0f0f0; /* Color de fondo en modo claro */
+    color: #333; /* Color de texto en modo claro */
+}
+/* navbar derecho  */
+
+.offcanvas{
+    font-family: Comic Sans MS; 
+    font-weight:bold; 
+    background-color: #f0f0f0; /* Color de fondo en modo claro */
+    color: #333; /* Color de texto en modo claro */
+}
+
+/* delete styles for ul and vinculos */
+ul ,a{
+list-style-type: none;
+text-decoration: none;
+}
+main{
+    margin-top: 100px;
+}
+/* titulo de books  */
+.tituloBest{
+
+    text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68; 
+}     
+
+/* modeDark */
+.dark-modo{
+    
+    background-color: #333;
+    color: #fff;
+    
 
 }
+
+/* change de icono  para que se oculte */
+#ML{
+    display: none;
+}
+
+#navbar1{
+    color: bisque;
+    font-size: 1.5rem;
+}
+.nav-item{
+    list-style: none;
+}
+.offcanvas-header{
+display: flex;
+justify-content: space-between;
+}
+
+/* estilo al titulo H1 de books */
+.text-TituloH1{
+    text-align: left; 
+    font-family: Comic Sans MS; 
+    font-weight:bold; 
+    font-size: 30px; 
+    color: #DC3545; 
+    text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68; 
+    text-align: center;
+    }
+
+    /* Style of card the book */
+    .card-ltitle{
+        text-align: left; 
+        font-family: Comic Sans MS; 
+        font-weight:bold; 
+        font-size: 30px; 
+        color: #ffc107; 
+        text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68; 
+        text-align: center;
+        font-size: 1.5rem; 
+    }
+    /* centrando the buttom of card */
+    .d-flex{
+        display: flex;
+        justify-content: center;
+        margin-bottom: -10px;
+    }
+
+    .d-grid {
+        margin-bottom: 5rem;
+
+    }
+    label{
+        text-align: left; 
+        font-family: Comic Sans MS; 
+        font-weight:bold; 
+        font-size: 30px; 
+        color: #ffc107; 
+        text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68; 
+        font-size: 1rem; 
+
+    }
+.btn-warning{
+    background: #e6c804;
+}
+.navBar{
+    margin-top: 3.5rem;
+}
+/* modificanco el navbar */

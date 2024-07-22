@@ -14,8 +14,13 @@ const btnLogout = document.getElementById("btnlogout");
 const prevPage = document.getElementById("prev-page");
 const nextPage = document.getElementById("next-page");
 const token = localStorage.getItem("token");
+// const BtnEntrar = document.getElementById("btn-entrar") as HTMLButtonElement;
 let currentPage = 1;
 const limit = 10;
+// BtnEntrar.addEventListener('click', (e: Event) => {
+//   e.preventDefault();
+//   alert('funciona');
+// });
 btnLogout.addEventListener("click", (e) => {
     localStorage.removeItem("token");
     window.location.href = "index.html";
@@ -41,6 +46,7 @@ else {
         }
     }));
     nextPage.addEventListener("click", (e) => __awaiter(void 0, void 0, void 0, function* () {
+        console.log('next page');
         if (currentPage >= 1) {
             currentPage++;
             yield allBooks(limit, currentPage);
@@ -91,7 +97,7 @@ else {
             const crudBooks = new booksController(URL_BOOKS);
             try {
                 const response = yield crudBooks.allBooks(token, limit, currentPage);
-                console.log(`Respuesta de allbooks: ${response} `);
+                console.log(`Respuesta de allbooks:${response}`);
                 const books = response.data;
                 containerBooks.innerHTML = "";
                 for (const book of books) {
@@ -99,7 +105,7 @@ else {
                 }
             }
             catch (error) {
-                console.error("Error fetching books: ", error);
+                // console.error("Error fetching books: ", error);
             }
         });
     }

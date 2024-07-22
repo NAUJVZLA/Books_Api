@@ -12,17 +12,16 @@ export class booksController {
             "accept": "*/*",
             "content-Type": "application/json",
             "Authorization": `Bearer ${token}`,
-
         };
         const requestOptions: RequestInit = {
             method: "GET",
             headers: headers,
         }
 
-        const response: Response = await fetch(`${this.domain}/api/vi/books?limit= ${limit}&page=${page}`, requestOptions)
+        const response: Response = await fetch(`${this.domain}/api/v1/books?limit= ${limit}&page= ${page}`, requestOptions)
         console.log(response);
         if (!response.ok) {
-            throw new Error(`Error al obtener libros : ${response.status}:${response.statusText}`)
+            throw new Error(`Error al obtener libros:${response.status}:${response.statusText}`)
         }
         const responseBodyGetAllBooks: BodyResponseGetAllBooks = await response.json();
         return responseBodyGetAllBooks;
@@ -40,20 +39,19 @@ export class booksController {
             "accept": "*/*",
             "content-Type": "application/json",
             "Authorization": `Bearer ${token}`,
-        }
+        };
 
-        const request: RequestInit = {
+        const requestOpcion: RequestInit = {
             method: "POST",
             headers: headers,
             body: JSON.stringify(newBook)
         };
 
-        const response: Response = await fetch(`${this.domain}/api/vi/books`, request);
+        const response: Response = await fetch(`${this.domain}/api/v1/books`, requestOpcion);
         if (!response.ok) {
-            console.log(`responde body error: ${(await response.json()).message}`);
-            throw new Error(`error: ${response.status}:${response.statusText}`);
+            // console.log(`responde body error: ${(await response.json()).message}`);
+            throw new Error(`error de captura de libros : ${response.status}:${response.statusText}`);
         }
-
         const responseBodyCreateBook: BodyResponseCreateBook = await response.json();
         return responseBodyCreateBook;
     }
@@ -63,14 +61,13 @@ export class booksController {
             "content-Type": "application/json",
             "Authorization": `Bearer ${token}`,
         };
-
         const requestOptions: RequestInit = {
             method: "GET",
             headers: headers,
         }
-        const response: Response = await fetch(`${this.domain}/api/v1/books/id${id}`, requestOptions);
+        const response: Response = await fetch(`${this.domain}/api/v1/books/${id}`, requestOptions);
         if (!response.ok) {
-            throw new Error(`Error al obtener libros : ${response.status}:${response.statusText}`)
+            throw new Error(`Error al obtener libros :${response.status}:${response.statusText}`)
         }
         const responseBodyGetById: BodyResponseGetById = await response.json();
         return responseBodyGetById;
@@ -88,14 +85,14 @@ export class booksController {
             "accept": "*/*",
             "content-Type": "application/json",
             "Authorization": `Bearer ${token}`,
-        }
+        };
         const requestOptions: RequestInit = {
             method: "PATCH",
             headers: headers,
             body: JSON.stringify(updatedBook)
         }
 
-        const response: Response = await fetch(`${this.domain}/api/v1/books/id${idcatche}`, requestOptions);
+        const response: Response = await fetch(`${this.domain}/api/v1/books/${idcatche}`, requestOptions);
         if (!response.ok) {
             throw new Error(`Error al obtener libros : ${response.status}:${response.statusText}`)
         }
@@ -113,7 +110,7 @@ export class booksController {
             method: "DELETE",
             headers: headers,
         }
-        const response: Response = await fetch(`${this.domain}/api/v1/books/id${id}`, requestOptions);
+        const response: Response = await fetch(`${this.domain}/api/v1/books/${id}`, requestOptions);
         if (!response.ok) {
             throw new Error(`Error al obtener libros : ${response.status}:${response.statusText}`)
         }
